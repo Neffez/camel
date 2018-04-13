@@ -17,6 +17,7 @@
 package org.apache.camel.component.telegram.service;
 
 import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -59,7 +60,6 @@ public interface RestBotAPI {
             @FormParam("disable_web_page_preview") Boolean disableWebPagePreview,
             @FormParam("disable_notification") Boolean disableNotification,
             @FormParam("reply_to_message_id") Long replyToMessageId);
-
 
     @POST
     @Path("/bot{authorizationToken}/sendPhoto")

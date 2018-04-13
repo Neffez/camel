@@ -16,11 +16,13 @@
  */
 package org.apache.camel.component.telegram.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * An outgoing text message.
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class OutgoingTextMessage extends OutgoingMessage {
 
     private static final long serialVersionUID = -8684079202025229263L;

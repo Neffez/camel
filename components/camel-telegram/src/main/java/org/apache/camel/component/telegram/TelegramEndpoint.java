@@ -63,6 +63,10 @@ public class TelegramEndpoint extends ScheduledPollEndpoint {
             }
         }
 
+        if(update.getCallbackQuery() != null) {
+            exchange.getIn().setHeader(TelegramConstants.TELEGRAM_CALLBACK_QUERY, update.getCallbackQuery());
+        }
+
         return exchange;
     }
 

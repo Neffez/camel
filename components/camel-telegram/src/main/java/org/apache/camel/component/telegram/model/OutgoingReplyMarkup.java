@@ -14,23 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.camel.component.telegram;
+package org.apache.camel.component.telegram.model;
 
-/**
- * A collection of supported media type for outgoing messages (produced).
- * It is meant to be put in the message headers using key {@link TelegramConstants#TELEGRAM_MEDIA_TYPE}.
- */
-public enum TelegramMediaType {
+public abstract class OutgoingReplyMarkup {
 
-    TEXT("txt"), PHOTO_PNG("png"), PHOTO_JPG("jpg"), AUDIO("mp3"), VIDEO("mp4"), DOCUMENT("-"), VOICE("ogg");
-
-    private String fileExtension;
-
-    TelegramMediaType(String fileExtension) {
-        this.fileExtension = fileExtension;
-    }
-
-    public String getFileExtension() {
-        return fileExtension;
-    }
 }

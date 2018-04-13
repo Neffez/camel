@@ -52,6 +52,9 @@ public class IncomingMessage implements Serializable {
 
     private IncomingDocument document;
 
+    private IncomingVoice voice;
+
+
     public IncomingMessage() {
     }
 
@@ -127,6 +130,13 @@ public class IncomingMessage implements Serializable {
         this.document = document;
     }
 
+    public IncomingVoice getVoice() {
+        return voice;
+    }
+
+    public void setVoice(IncomingVoice voice) {
+        this.voice = voice;
+    }
 
     @Override
     public String toString() {
@@ -140,6 +150,7 @@ public class IncomingMessage implements Serializable {
         sb.append(", video=").append(video);
         sb.append(", audio=").append(audio);
         sb.append(", document=").append(document);
+        sb.append(", voice=").append(voice);
         sb.append('}');
         return sb.toString();
     }

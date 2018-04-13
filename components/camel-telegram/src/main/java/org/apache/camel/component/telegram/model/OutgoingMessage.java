@@ -18,15 +18,20 @@ package org.apache.camel.component.telegram.model;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * The superclass of all outgoing messages.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public abstract class OutgoingMessage implements Serializable {
 
     private static final long serialVersionUID = -5958829164103569292L;
 
+    @JsonProperty("chat_id")
     protected String chatId;
 
     @JsonProperty("disable_notification")
@@ -34,6 +39,9 @@ public abstract class OutgoingMessage implements Serializable {
 
     @JsonProperty("reply_to_message_id")
     protected Long replyToMessageId;
+
+    @JsonProperty("reply_markup")
+    protected OutgoingReplyMarkup replyMarkup;
 
     public OutgoingMessage() {
     }
@@ -62,12 +70,21 @@ public abstract class OutgoingMessage implements Serializable {
         this.replyToMessageId = replyToMessageId;
     }
 
+    public OutgoingReplyMarkup getReplyMarkup() {
+        return replyMarkup;
+    }
+
+    public void setReplyMarkup(OutgoingReplyMarkup replyMarkup) {
+        this.replyMarkup = replyMarkup;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("OutgoingMessage{");
         sb.append("chatId='").append(chatId).append('\'');
         sb.append(", disableNotification=").append(disableNotification);
         sb.append(", replyToMessageId=").append(replyToMessageId);
+        sb.append(", replyMarkup=").append(replyMarkup);
         sb.append('}');
         return sb.toString();
     }

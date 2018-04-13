@@ -16,56 +16,32 @@
  */
 package org.apache.camel.component.telegram.model;
 
-import java.io.Serializable;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Represents an update with reference to the previous state.
+ * An array or {@link InlineKeyboardButton}
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Update implements Serializable {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class OutgoingInlineKeyboardMarkup extends OutgoingReplyMarkup {
 
-    private static final long serialVersionUID = -4001092937174853655L;
+    @JsonProperty("inline_keyboard")
+    private List<List<InlineKeyboardButton>> keyboardButtonRows;
 
-    @JsonProperty("update_id")
-    private Long updateId;
-
-    private IncomingMessage message;
-
-    @JsonProperty("callback_query")
-    private IncomingCallbackQuery callbackQuery;
-
-    public Update() {
+    public List<List<InlineKeyboardButton>> getKeyboardButtonRows() {
+        return keyboardButtonRows;
     }
 
-    public Long getUpdateId() {
-        return updateId;
-    }
-
-    public void setUpdateId(Long updateId) {
-        this.updateId = updateId;
-    }
-
-    public IncomingMessage getMessage() {
-        return message;
-    }
-
-    public void setMessage(IncomingMessage message) {
-        this.message = message;
-    }
-
-    public IncomingCallbackQuery getCallbackQuery() {
-        return callbackQuery;
-    }
-
-    public void setCallbackQuery(IncomingCallbackQuery callbackQuery) {
-        this.callbackQuery = callbackQuery;
+    public void setKeyboardButtonRows(List<List<InlineKeyboardButton>> keyboardButtonRows) {
+        this.keyboardButtonRows = keyboardButtonRows;
     }
 
     @Override
     public String toString() {
-        return "Update{" + "updateId=" + updateId + ", message=" + message + ", callbackQuery=" + callbackQuery + '}';
+        return "OutgoingInlineKeyboardMarkup{" + "keyboardButtons=" + keyboardButtonRows + '}';
     }
 }

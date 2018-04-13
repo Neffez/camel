@@ -29,6 +29,8 @@ public final class TelegramConstants {
 
     public static final String TELEGRAM_PARSE_MODE = "CamelTelegramParseMode";
 
+    public static final String TELEGRAM_CALLBACK_QUERY = "CamelTelegramCallbackQuery";
+
     private TelegramConstants() {
     }
 
